@@ -119,6 +119,12 @@ public class SolrQueryGenerator {
 		queryBuilder.replace(queryBuilder.lastIndexOf(lastParamString), queryBuilder.length(), sb.toString());
 		return this;
 	}
+
+	public SolrQueryGenerator append(String str) {
+		queryBuilder
+			.append(str);
+		return this;
+	}
 	
 	public String toQueryString() {
 		return queryBuilder.toString();
