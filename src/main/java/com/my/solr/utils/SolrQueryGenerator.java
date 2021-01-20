@@ -141,7 +141,8 @@ public class SolrQueryGenerator {
 		queryBuilder.append('(');
 		
 		for (int i = 0; i < params.length - 1; i += 2) {
-			String name = String.valueOf(params[i]);
+			String name = Optional.ofNullable(String.valueOf(params[i]))
+				.orElseThrow(() -> new IllegalArgumentException("name must be string."));
 			Object value = params[i + 1];
 			this.param(name, value);
 			
